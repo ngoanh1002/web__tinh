@@ -23,7 +23,7 @@ let section = document.createElement('section')
 section.classList.add('home')
 section.innerHTML = `
 <section>
-<div data-aos="fade-up">
+<div class='over' data-aos="fade-up">
  <div><img src="/assets/images/Dekstop-1-Black-1.png" alt=""></div>
 </div>
 </section>

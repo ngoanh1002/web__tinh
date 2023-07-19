@@ -1,10 +1,13 @@
-console.log('app start');
-const app = document.querySelector('body');
-
-import {render} from './components/header.js';
 
 
-app.appendChild(await render());
+
+
+const app = document.querySelector('main');
+
+import { apiurl, endpoint, fetchdata } from "/assets/js/components/help.js";
+
+
+// app.appendChild(await render());
 async function initapp() {
     if (location.pathname == '/') {
         let page = await import('./pages/home_page.js');

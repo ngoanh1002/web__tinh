@@ -32,23 +32,23 @@ button{
     z-index: 100;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.header a{
+header a{
     color: white;
 }
-.header p, span{
+header p, span{
     font-family: 'Pattaya', sans-serif;
     font-size: 32px;
     padding: 12px;
 }
-.header span{
+header span{
     padding-right: 0 ;
 }
 
-.header .options{
+header .options{
     display: flex;
     gap: 50px;
 }
-.header .options a{
+header .options a{
     
     font-weight: 500;
     padding: 12px;
@@ -63,6 +63,7 @@ button{
 /*main*/
 main {
     margin-bottom: 40px;
+    padding-top: 60px;
 }
 
 img{
@@ -74,10 +75,16 @@ img{
     border-radius: 10px;
     
 }
+main section {
+    overflow: hidden;
+}
 .products{
     display: grid;
     grid-template: auto / repeat(4 , 1fr);
     grid-gap:20px
+}
+.over {
+    overflow: hidden;
 }
 .products .text-box {
     margin-left: 25px;
