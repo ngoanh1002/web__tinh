@@ -4,7 +4,7 @@
 
 const app = document.querySelector('main');
 
-import { apiurl, endpoint, fetchdata } from "/assets/js/components/help.js";
+import { apiurl, endpoint, fetchdata, } from "/assets/js/components/help.js";
 
 
 // app.appendChild(await render());
@@ -25,5 +25,23 @@ async function initapp() {
         let render = await page.render();
         app.appendChild(await render)
     }
+    if (location.pathname.includes("product_detail")) {
+        let pathname = location.pathname;
+        pathname = pathname.split('/')[2];
+        let getproductsbyid = {
+          apiurl: apiurl,
+          endpoint: endpoint.clothes + '/' + pathname,
+          method: "GET",
+          async callback(params) {
+            let page = await import("./pages/product_detail.js");
+            let render = await page.render();
+            app.appendChild(await render);
+            
+           
+          }
+        };
+        
+        await fetchdata(getproductsbyid)
+      }
 }
 initapp();

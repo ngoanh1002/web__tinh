@@ -35,3 +35,6 @@ export async function removeloader() {
         loader.remmove()
     });
 }
+export async function formatprice(params) {
+    return params.toLocaleString("vi-VN") + "VND";
+  }

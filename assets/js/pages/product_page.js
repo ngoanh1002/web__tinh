@@ -46,6 +46,7 @@ async function renderclothes(params) {
         div.innerHTML = `
            <div class="image" style="background-image: url(${image});"></div>
            <div class="text-box">
+           <a href="/product_detail/${id}">
            <p class="name">${name}</p>
            <p class="price">${price}</p>
            </div>
