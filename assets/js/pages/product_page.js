@@ -1,4 +1,4 @@
-import { apiurl, endpoint, fetchdata } from "../components/help.js";
+import { apiurl, endpoint, fetchdata, formatprice  } from "../components/help.js";
 
 let getclothes = {
     apiurl: apiurl,
@@ -43,13 +43,15 @@ async function renderclothes(params) {
         let {name, price, image, id} = clothes;
         let div = document.createElement('div');
         div.classList.add('item');
+        let formattedPrice = await formatprice(price);
         div.innerHTML = `
            <div class="image" style="background-image: url(${image});"></div>
-           <div class="text-box">
            <a href="/product_detail/${id}">
+           <div class="text-box">
            <p class="name">${name}</p>
-           <p class="price">${price}</p>
+           <p class="price">${formattedPrice}</p>
            </div>
+           
         `;
         document.querySelector('.products').appendChild(div);
        
@@ -60,11 +62,14 @@ async function renderclothes1(params) {
         let {name, price, image, id} = clothes1;
         let div = document.createElement('div');
         div.classList.add('item');
+        let formattedPrice = await formatprice(price);
         div.innerHTML = `
            <div class="image" style="background-image: url(${image});"></div>
+           <a href="/product_detail/${id}">
            <div class="sud-box">
            <p class="name">${name}</p>
-           <p class="price">${price}</p>
+           <p class="price">${formattedPrice}</p>
+           
            </div>
         `;
         document.querySelector('.products1').appendChild(div);

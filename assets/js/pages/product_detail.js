@@ -22,9 +22,7 @@ export async function render(params) {
   div.innerHTML = `
   <div class="content">
       <h3>${name}</h3>
-      <h4>${sub_title}</h4>
       <h4 class="price">${formattedPrice}</h4>
-      <p>${content}</p>
   </div>
 </div>
  

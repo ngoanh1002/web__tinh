@@ -34,7 +34,7 @@ async function initapp() {
           method: "GET",
           async callback(params) {
             let page = await import("./pages/product_detail.js");
-            let render = await page.render();
+            let render = await page.render(params);
             app.appendChild(await render);
             
            
