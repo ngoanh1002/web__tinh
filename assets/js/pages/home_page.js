@@ -66,12 +66,15 @@ async function renderclothes(params) {
         div.classList.add('item');
         let formattedPrice = await formatprice(price);
         div.innerHTML = `
+            <a href="/product_detail/${id}">
+            <div>
            <div class="image" style="background-image: url(${image});"></div>
-           <a href="/product_detail/${id}">
            <div class="text-box">
            <p class="name">${name}</p>
            <p class="price">${formattedPrice}</p>
            </div>
+           </div>
+
            
         `;
         document.querySelector('.products').appendChild(div);
@@ -85,12 +88,14 @@ async function renderclothes1(params) {
         div.classList.add('item');
         let formattedPrice = await formatprice(price);
         div.innerHTML = `
+        <a href="/product_detail/${id}">
+        <div>
            <div class="image" style="background-image: url(${image});"></div>
-           <a href="/product_detail/${id}">
            <div class="sud-box">
            <p class="name">${name}</p>
            <p class="price">${formattedPrice}</p>
            
+           </div>
            </div>
         `;
         document.querySelector('.products1').appendChild(div);
