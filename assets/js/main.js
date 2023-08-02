@@ -35,7 +35,7 @@ async function initapp() {
           async callback(params) {
             let page = await import("./pages/product_detail.js");
             let render = await page.render(params);
-            // app.appendChild(await render);
+            app.appendChild(await render);
          
             
            
@@ -48,7 +48,7 @@ async function initapp() {
           async callback(params) {
             let page = await import("./pages/product_detail.js");
             let render = await page.render(params);
-            // app.appendChild(await render);
+            app.appendChild(await render);
     
             
            

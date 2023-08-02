@@ -66,6 +66,18 @@ main {
     padding-top: 60px;
 }
 
+.btn {
+	border-radius: 6px;
+	padding: 10px 12px;
+	background: #f4f4f4;
+	font-weight: 600;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+	display: inline-block;
+	border: 0;
+}
 img{
     max-width: 100%;
     ;
@@ -137,6 +149,50 @@ main .products .item p {
 }
 main .video {
     max-width: 100%;
+}
+/*product_detail*/
+.products_details_page {
+	display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 -16px;
+}
+.col-7 {
+	flex: 0 0 41.66%;
+	max-width: 41.66%;
+	padding: 10px;
+}
+.col-5 {
+	flex: 0 0 41.66%;
+	max-width: 41.66%;
+	padding: 10px;
+}
+.size {
+	display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.size span {
+	text-align: center;
+	padding: 12px;
+	border-radius: 6px;
+	border : 1px solid #ccc;
+	cursor: pointer;
+	background-color: #fff;
+	display: block;
+	margin: 10px 0 10px;
+	
+}
+.size span.active {
+	background-color: #8b3a3a ;
+	border-color:#8b3a3a ;
+}
+.products_details_page .clother-img {
+    background: no-repeat center;
+    background-size: cover;
+    aspect-ratio: 1/1;
+    width: 80%;
+    margin: auto;
 }
 
 /*footer*/
