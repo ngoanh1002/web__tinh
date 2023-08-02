@@ -47,7 +47,7 @@ async function renderclother(params) {
         div.innerHTML = `
         <a href="/product_detail/${id}">
         <div>
-       <div class="image" style="background-image: url(${image});"></div>
+       <div class="image" style="background-image: url(${image[0]});"></div>
        <div class="text-box">
        <p class="name">${name}</p>
        <p class="price">${formattedPrice}</p>
