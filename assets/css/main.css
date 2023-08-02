@@ -78,6 +78,9 @@ img{
 main section {
     overflow: hidden;
 }
+main .home_details {
+    padding-top: 60px ;
+}
 .products{
     display: grid;
     grid-template: auto / repeat(4 , 1fr);

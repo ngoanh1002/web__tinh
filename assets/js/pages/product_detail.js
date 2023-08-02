@@ -1,14 +1,14 @@
-import { fetchdata, formatprice } from "../components/help.js";
+import { apiurl, endpoint, fetchdata, formatprice } from "../components/help.js";
 
 let section = document.createElement('section')
-section.classList.add('home')
+section.classList.add('home_details')
 section.innerHTML = `
 
-<section>
+
 <div class="container">
     
 </div>
-</section>
+
 
 `;
 let main = document.querySelector("main")
