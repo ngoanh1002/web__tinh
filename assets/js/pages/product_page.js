@@ -61,7 +61,7 @@ async function renderclother(params) {
 }
 async function renderclother1(params) {
     for (let clother1 of params){
-        let {name, price, image, id} = clother1;
+        let {name, price, image, id, } = clother1;
         let div = document.createElement('div');
         div.classList.add('item');
         let formattedPrice = await formatprice(price);

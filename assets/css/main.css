@@ -157,11 +157,7 @@ main .video {
     flex-wrap: wrap;
     margin: 0 -16px;
 }
-.col-7 {
-	flex: 0 0 41.66%;
-	max-width: 41.66%;
-	padding: 10px;
-}
+/* s */
 .col-5 {
 	flex: 0 0 41.66%;
 	max-width: 41.66%;

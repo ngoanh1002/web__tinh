@@ -25,6 +25,12 @@ async function initapp() {
         let render = await pag.e.render();
         app.appendChild(await render)
     }
+    if (location.pathname.includes("cart")) {
+      let page = await import("./pages/cart.js");
+      let render = await page.render();
+      app.appendChild(await render);
+      
+    }
     if (location.pathname.includes("product_detail")) {
         let pathname = location.pathname;
         pathname = pathname.split('/')[2];

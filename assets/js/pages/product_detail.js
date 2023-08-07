@@ -6,7 +6,6 @@ let section = document.createElement('section')
 section.classList.add('home_details')
 section.innerHTML = `
 
-
 <div class="container">
     
 </div>
@@ -42,9 +41,9 @@ export async function render(params) {
       <div class="size"></div>
       <div class="quantity">
           <div class="buttons_added">
-              <button class="btn increase is-form"><i class="fa-solid fa-minus fa-lg"></i></button>
+              <button class="btn increase"><i class="fa-solid fa-minus fa-lg"></i></button>
               <span class="input-qty">${quantity}</span>
-              <button class="btn decrease is-form"><i class="fa-solid fa-plus fa-lg"></i></button>
+              <button class="btn decrease"><i class="fa-solid fa-plus fa-lg"></i></button>
           </div>
           <button class="btn add">thêm vào giỏ hàng</button>
       </div>
@@ -60,40 +59,33 @@ export async function render(params) {
       handleclassactive(div, e);
     });
     div.querySelector('.size').appendChild(span);}
-    let minus = document.querySelector(".increase");
-  let plus = document.querySelector(".decrease");
-  let qty = document.querySelector(".input-qty");
+    
+  
+  
 
+  let number = 1;
+  let span = div.querySelector('.products_details_page .input-qty');
+  let increase = document.querySelector(".products_details_page .increase");
+  let decrease = document.querySelector(".products_details_page .decrease");
+  
+  
+  if(increase){
+    increase.addEventListener('click', function(){
+          number -= 1;
+          span.innerHTML = number;
+      });
+      if(number < 1){ number = 1; }
+  }
  
-    // async function handleQuantity(type) {
-    //   let currentQuantity = parseInt(qty.innerHTML);
-    //   minus.style.pointerEvents = "all";
-    //   if (type == "minus") {
-    //     currentQuantity -= 1;
-    //     if (currentQuantity < 1) {
-    //       minus.style.pointerEvents = "none";
-    //       currentQuantity = 1;
-    //     }
-    //   }
-    //   if (type == "plus") {
-    //     currentQuantity += 1;
-    //   }
-    //   qty.innerHTML = currentQuantity;
-    // }
   
-    // minus.addEventListener("click", function () {
-    //   handleQuantity("minus");
-    // });
   
-    // plus.addEventListener("click", function () {
-    //   handleQuantity("plus");
-    // });
+  if(decrease){
+    decrease.addEventListener('click', function(){
+          number += 1;
+          span.innerHTML = number;
+      });
+  }
+
+
 
   document.querySelector('.container').appendChild(div);
-  };
-  
-  
-
-
-
-

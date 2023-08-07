@@ -30,9 +30,16 @@ module.exports = {
             <a style="color: #000;" href="shop">Sản phẩm</a>
             <a style="color: #000;" href="about">Về chúng tôi</a>
         </div>
-        <div class="others">
-            <button><i class="fa-solid fa-cart-shopping" style="color: ;"></i></button>             
-        </div>
+        <div class="login">
+        <a href="/cart">
+            <button title="Giỏ hàng" class="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart_value"> </span>
+            </button>
+        </a>
+    </div>
+    
+</div>
     </div>
     </header>
     <main>
