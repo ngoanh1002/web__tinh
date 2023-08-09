@@ -10,8 +10,32 @@ section.classList.add('home')
 section.innerHTML = `
 
 <section>
-<div class="products">
+<div class="box-information">
     
+<div class="cart-box">
+<div class="cart-left scroll"></div>
+<div class="cart-right">
+	<div class="grid">
+		<div>
+			<p class="text-cart">Họ và tên </p>
+			<input type="text" class="pad-inp name-client">
+		</div>
+		<div>
+			<p class="text-cart">Số điện thoại</p>
+			<input type="text" class="pad-inp phone-client">
+		</div>
+	</div>
+	<p class="text-cart">Lưu ý của khách hàng</p>
+	<input type="text" class="pad-inp-note note-client">
+	<p class="text-cart">Địa chỉ nhận hàng</p>
+	<textarea name="" id="" cols="30" rows="10" class="pad-inp-address address-client"></textarea>
+	<div class="total-bill"></div>
+	<button class="buy-end buy-end-1">Thanh toán</button>
+	
+</div>
+</div>  
+
+</div>
 </div>
 </section>
 
@@ -54,7 +78,7 @@ main.appendChild(section)
             </div>
             <button class="btn delete"><i class="fa-solid fa-trash"></i></button>
   
-            <h4>Thành tiền: ${formatprice(totalprice)}VND</h4>
+            <h4>Thành tiền: ${(totalprice)}VND</h4>
         </div>
         
     </div>
@@ -110,7 +134,7 @@ async function updatecartquantity(params) {
 		}
 		cart[key]['total_price'] = cart[key]['price'] * cart[key]['quantity'];
 		parentdom.querySelector('.quantity').innerHTML = cart[key]['quantity'];
-		parentdom.querySelector('h4').innerHTML = `Thành tiền: ${format_price(cart[key]['total_price'])}VND`;
+		parentdom.querySelector('h4').innerHTML = `Thành tiền: ${formatprice(cart[key]['totalprice'])}VND`;
 	}
 
 	updatetotalbill();
