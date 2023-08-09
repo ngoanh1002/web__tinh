@@ -1,7 +1,6 @@
 import { apiurl, endpoint, fetchdata, formatprice } from "../components/help.js";
 
 
-
 let section = document.createElement('section')
 section.classList.add('home_details')
 section.innerHTML = `
@@ -41,9 +40,9 @@ export async function render(params) {
       <div class="size"></div>
       <div class="quantity">
           <div class="buttons_added">
-              <button class="btn increase"><i class="fa-solid fa-minus fa-lg"></i></button>
-              <span class="input-qty">${quantity}</span>
-              <button class="btn decrease"><i class="fa-solid fa-plus fa-lg"></i></button>
+          <button class="btn increase"><i class="fa-solid fa-minus fa-lg"></i></button>
+          <span class="input-qty">${quantity}</span>
+          <button class="btn decrease"><i class="fa-solid fa-plus fa-lg"></i></button>
           </div>
           <button class="btn add">thêm vào giỏ hàng</button>
       </div>
@@ -51,6 +50,7 @@ export async function render(params) {
   </div>
  
 	`;
+
  for (let[k, v] of Object.entries(size)) {
     let span = document.createElement('span');
     span.innerHTML = `${v}`;
@@ -61,31 +61,62 @@ export async function render(params) {
     div.querySelector('.size').appendChild(span);}
     
   
-  
+    let number = 1
+    let increase = document.querySelector(".increase");
+    let decrease = document.querySelector(".decrease");
+    let qty = document.querySelector(".input-qty");
+     
+        if(increase){
+          increase.addEventListener('click', function(){
+            number -= 1;
+            qty.innerHTML = number;
+            if (number < 1) {
+              alert('Lỗi số lượng sản phẩm')
+              return
+          }
+            });
+          }
 
-  let number = 1;
-  let span = div.querySelector('.products_details_page .input-qty');
-  let increase = document.querySelector(".products_details_page .increase");
-  let decrease = document.querySelector(".products_details_page .decrease");
-  
-  
-  if(increase){
-    increase.addEventListener('click', function(){
-          number -= 1;
-          span.innerHTML = number;
-      });
-      if(number < 1){ number = 1; }
-  }
- 
-  
-  
-  if(decrease){
-    decrease.addEventListener('click', function(){
-          number += 1;
-          span.innerHTML = number;
-      });
-  }
+        
+        if(decrease){
+          decrease.addEventListener('click', function(){
+                number += 1;
+                qty.innerHTML = number;
+            });
+        }
+    
+    let cart = {};
+    if(localStorage.getItem('cart-id')) cart = JSON.parse(localStorage.getItem('cart-id'));
+        div.querySelector('.add').addEventListener('click', function(){
+          let size_active = div.querySelector('.size span.active');
+          let key = name;
+          if (!size_active) {
+            alert('bạn chưa chọn size');
+            return false;
+          }
+          if (cart[key]){
+              cart[key].quantity += number;
+              cart[key].totalprice = cart[key].quantity * cart[key].price;
+          }
+         
+          else{
+              cart[key] = {
+                  quantity : number, 
+                  name: name,
+                  price: price,
+                  size: size_active.getAttribute('data-size'),
+                  image:image,
+                  totalprice: price*number 
+              }
+          }
+          localStorage.setItem('cart-id', JSON.stringify(cart));
+          
+        });
 
 
+      
+  return div
+      
+}
 
-  document.querySelector('.container').appendChild(div);
+

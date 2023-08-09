@@ -3,7 +3,6 @@ export const apiurl = 'https://648704afbeba6297278facba.mockapi.io/';
 
 export const endpoint = {
     clother: 'clother',
-    clother1: 'clother1',
 }
 
 

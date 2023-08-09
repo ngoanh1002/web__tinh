@@ -151,6 +151,9 @@ main .video {
     max-width: 100%;
 }
 /*product_detail*/
+main {
+    overflow: hidden;
+}
 .products_details_page {
 	display: flex;
     justify-content: center;

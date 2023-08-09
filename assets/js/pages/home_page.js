@@ -1,23 +1,30 @@
 import { apiurl, endpoint, fetchdata, formatprice } from "../components/help.js";
+let prdstate = [];
 
 let getclother = {
     apiurl: apiurl,
     endpoint: endpoint.clother,
     method: 'GET',
     async callback(params) {
-        await renderclother(params)
+        prdstate = [...params];
+        await renderclother({
+            arr: prdstate,
+            dom: section.querySelector('.products') ,
+            start: 0,
+            end: 8,
+
+        });
+        await renderclother({
+            arr: prdstate ,
+            dom: section.querySelector('.products1') ,
+            start: 8,
+            end: prdstate.length,
+
+        });
     }
 
 }
-let getclother1 = {
-    apiurl: apiurl,
-    endpoint: endpoint.clother1,
-    method: 'GET',
-    async callback(params) {
-        await renderclother1(params)
-    }
 
-}
 
 let section = document.createElement('section')
 section.classList.add('home')
@@ -60,8 +67,9 @@ let main = document.querySelector("main")
 main.appendChild(section)
 
 async function renderclother(params) {
-    for (let clother of params){
-        let {name, price, image, id} = clother;
+    let { arr, dom, start, end } = params
+    for (let i = start; i < end ; i++){
+        let {name, price, image, id} = arr[i];
         let div = document.createElement('div');
         div.classList.add('item');
         let formattedPrice = await formatprice(price);
@@ -77,34 +85,11 @@ async function renderclother(params) {
 
            
         `;
-        document.querySelector('.products').appendChild(div);
+        dom.appendChild(div);
        
     }
 }
-async function renderclother1(params) {
-    for (let clother1 of params){
-        let {name, price, image, id} = clother1;
-        let div = document.createElement('div');
-        div.classList.add('item');
-        let formattedPrice = await formatprice(price);
-        div.innerHTML = `
-        <a href="/product_detail/${id}">
-        <div>
-           <div class="image" style="background-image: url(${image});"></div>
-           <div class="sud-box">
-           <p class="name">${name}</p>
-           <p class="price">${formattedPrice}</p>
-           
-           </div>
-           </div>
-        `;
-        document.querySelector('.products1').appendChild(div);
-       
-    }
-}
-
-fetchdata(getclother);
-fetchdata(getclother1);  
+fetchdata(getclother) ;
 
 let aosScript = document.createElement('script'); 
 aosScript.src = '/assets/libs/aos-master/aos.js';
@@ -116,10 +101,4 @@ aosScript.onload = function() {
 };
 
 
-export async function render() {
-    let template = document.createElement('div');
-    template.classList.add('home-page');
-    template.innerHTML = '';
 
-    return template;
-}
