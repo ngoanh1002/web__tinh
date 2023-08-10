@@ -61,33 +61,41 @@ export async function render(params) {
     div.querySelector('.size').appendChild(span);}
     
   
-    let number = 1
-    let increase = document.querySelector(".increase");
-    let decrease = document.querySelector(".decrease");
-    let qty = document.querySelector(".input-qty");
+    
+    let increase = div.querySelector(".increase");
+    let decrease = div.querySelector(".decrease");
+    let qty = div.querySelector(".input-qty");
+    let number = parseInt(qty.innerHTML)
      
-        if(increase){
-          increase.addEventListener('click', function(){
-            number -= 1;
-            qty.innerHTML = number;
-            if (number < 1) {
-              alert('Lỗi số lượng sản phẩm')
-              return
-          }
-            });
-          }
-
+     
+async function handlecplup(type) {
         
-        if(decrease){
+        if(type == 'decrease'){
           decrease.addEventListener('click', function(){
                 number += 1;
                 qty.innerHTML = number;
             });
+           
         }
+    if(type == 'increase'){
+          increase.addEventListener('click', function(){
+            number -= 1;
+            qty.innerHTML = number;
+            if (number < 1) {
+              number = 1 ;
+              alert('Lỗi số lượng sản phẩm') 
+          }
+            });
+          }
+          
+        }
+        handlecplup('increase')
+        handlecplup('decrease')
     
-    let cart = {};
-    if(localStorage.getItem('cart-id')) cart = JSON.parse(localStorage.getItem('cart-id'));
+    
+     
         div.querySelector('.add').addEventListener('click', function(){
+         const cart = JSON.parse(localStorage.getItem('cart-id'));
           let size_active = div.querySelector('.size span.active');
           let key = name;
           if (!size_active) {
@@ -113,10 +121,10 @@ export async function render(params) {
           
         });
 
-
+        
       
-  return div
-      
+  section.querySelector('.container').appendChild(div)
+      return div
 }
 
 

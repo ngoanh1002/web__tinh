@@ -1,4 +1,4 @@
-import { apiurl, endpoint, fetchdata, formatprice  } from "../components/help.js";
+import { apiurl, endpoint, fetchdata, formatprice,  } from "../components/help.js";
 
 let prdstate = [];
 

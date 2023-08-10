@@ -59,6 +59,9 @@ header .options a{
 .others i{
     font-size: 20px;
 }
+.fa-solid {
+    font-size: 20px;
+}
 
 /*main*/
 main {
@@ -152,7 +155,7 @@ main .video {
 }
 /*product_detail*/
 main {
-    overflow: hidden;
+        overflow: hidden;
 }
 .products_details_page {
 	display: flex;
@@ -193,6 +196,12 @@ main {
     width: 80%;
     margin: auto;
 }
+/* cart-page */
+main .cart-page {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 
 /*footer*/
 .footer{

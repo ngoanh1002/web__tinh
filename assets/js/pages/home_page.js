@@ -66,7 +66,7 @@ section.innerHTML = `
 let main = document.querySelector("main")
 main.appendChild(section)
 
-async function renderclother(params) {
+export async function renderclother(params) {
     let { arr, dom, start, end } = params
     for (let i = start; i < end ; i++){
         let {name, price, image, id} = arr[i];
@@ -88,8 +88,10 @@ async function renderclother(params) {
         dom.appendChild(div);
        
     }
+    return section
 }
 fetchdata(getclother) ;
+
 
 let aosScript = document.createElement('script'); 
 aosScript.src = '/assets/libs/aos-master/aos.js';

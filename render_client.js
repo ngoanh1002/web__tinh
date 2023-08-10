@@ -34,7 +34,7 @@ module.exports = {
         <a href="/cart">
             <button title="Giỏ hàng" class="cart">
                 <i class="fa-solid fa-cart-shopping"></i>
-                <span class="cart_value"> </span>
+                <span class="cartquantity"> </span>
             </button>
         </a>
     </div>
