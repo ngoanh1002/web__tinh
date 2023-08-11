@@ -1,6 +1,7 @@
 import { apiurl, endpoint, fetchdata, formatprice } from "../components/help.js";
 
-
+let cart = {};
+  if(localStorage.getItem('cart-id')) cart = JSON.parse(localStorage.getItem('cart-id'));
 let section = document.createElement('section')
 section.classList.add('home_details')
 section.innerHTML = `
@@ -95,7 +96,6 @@ async function handlecplup(type) {
     
      
         div.querySelector('.add').addEventListener('click', function(){
-         const cart = JSON.parse(localStorage.getItem('cart-id'));
           let size_active = div.querySelector('.size span.active');
           let key = name;
           if (!size_active) {
@@ -121,10 +121,22 @@ async function handlecplup(type) {
           
         });
 
-        
+        updatatotalquantity(cart)
       
   section.querySelector('.container').appendChild(div)
       return div
 }
 
 
+export async function updatatotalquantity() {
+	let totalquantity = 0;
+	for (let [k, v] of Object.entries(cart)) {
+		totalquantity += v.quantity;
+	}
+	localStorage.setItem('totalquantity',totalquantity);
+	document.querySelector('.cartquantity').innerHTML = `${totalquantity}`
+  console.log(totalquantity)
+	if(totalquantity == 0) {
+		document.querySelector('.cartquantity').innerHTML = ``
+	}
+}

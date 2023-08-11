@@ -9,20 +9,20 @@ async function initapp() {
         let render = await page.render();
         app.appendChild(await render)
         await page.callback(params);
-        await updatatotalquantity();
+        await updatatotalquantity(cart);
     }
 
     if (location.pathname.includes('shop')) {
         let page = await import('./pages/product_page.js');
         let render = await page.render();
         app.appendChild(await render)
-        await updatatotalquantity();
+        await updatatotalquantity(cart);
     }
     if (location.pathname.includes('about')) {
         let page = await import('./pages/about_page.js');
         let render = await page.render();
         app.appendChild(await render)
-        await updatatotalquantity();
+        await updatatotalquantity(cart);
     }
     if (location.pathname.includes("cart")) {
       let page = await import("./pages/cart_page.js");
@@ -42,7 +42,7 @@ async function initapp() {
             let page = await import("./pages/product_detail.js");
             let render = await page.render(params);
             app.appendChild(await render);
-            await updatatotalquantity();
+            await updatatotalquantity(cart);
 
           
           }

@@ -3,7 +3,7 @@ import { apiurl, endpoint, fetchdata, formatprice   } from "../components/help.j
 let cart = {} ;
 
 let cartdom = document.querySelectorAll('.cart');
-cart = JSON.parse(localStorage.getItem('cart-id'));
+if(localStorage.getItem('cart-id')) cart = JSON.parse(localStorage.getItem('cart-id'));
 
 
 let section = document.createElement('section')
@@ -39,12 +39,16 @@ section.innerHTML = `
 </div>
 </section>
 
-<section>
+<section class="cart-bill">
 <div class="cart">
-<div class="total-bill"></div>
-<h3 class='totalbill'> Thành tiền 0VND</h3>
-	<button class="btn buy-end-1">Thanh toán</button>
+
 </div>
+<hr>
+<div class="total-bill">
+<h3 class='totalbill'> Thành tiền 0VND</h3>
+	
+</div>
+<button class="btn buy-end-1">Thanh toán</button>
 </section>
 `;
 let main = document.querySelector("main")
@@ -60,25 +64,29 @@ main.appendChild(section)
         let div = document.createElement("div");
         div.classList.add('cartdom');
 		    div.innerHTML = `
-  <div class="col-5">
-  <div class="slide clother-img" style="background-image: url(${image})"></div>
-  <div class="images"></div>
-</div>
-        <h3 class="name">${name}</h3>
-        <h4 class="price">${formattedPrice}</h4>
-        <h4>size</h4>
-        <div class="size">${size}</div>
-        <div class="quantity">
-            <div class="buttons_added">
-            <button class="btn decrease"><i class="fa-solid fa-minus fa-lg"></i></button>
-            <span class="input-qty">${quantity}</span>
-            <button class="btn increase"><i class="fa-solid fa-plus fa-lg"></i></button>
-            </div>
-            <button class="btn delete"><i class="fa-solid fa-trash"></i></button>
-  
-            <h4>Thành tiền: ${formattedtotalprice}VND</h4>
-        </div>
-        
+  <div class="col">
+  <div class="images">
+  <div class="slide clother-img" style="background-image: url(${image[0]})"></div>
+  </div>
+  <div class="details-cart">
+  <h3 class="name">${name}</h3>
+  <h4 class="price">${formattedPrice}</h4>
+  <h4>size</h4>
+  <div class="size">${size}</div>
+  <div class="quantity">
+	  <div class="buttons_added">
+	  <button class="btn decrease"><i class="fa-solid fa-minus fa-lg"></i></button>
+	  <span class="input-qty">${quantity}</span>
+	  <button class="btn increase"><i class="fa-solid fa-plus fa-lg"></i></button>
+	  
+	  </div>
+	  <button class="btn delete"><i class="fa-solid fa-trash"></i></button>
+
+	 
+  </div>
+  <h4>Thành tiền: ${formattedtotalprice}VND</h4>
+  </div>
+   
     </div>
 		`;
 
@@ -118,8 +126,23 @@ main.appendChild(section)
 	// return section
 	updatetotalbill();
 	updatatotalquantity()
+	checkCart(cart)
 	
 }
+async function checkCart(params) {
+    if (Object.keys(params).length === 0) {
+      section.innerHTML = `
+        <div class="container none">
+          <div>
+            <h2>bạn chưa có sản phẩm nào trong giỏ</h2>
+            <a href="./pages/shop">
+              <button> Tất cả các sản phẩm </button>
+            </a>
+          </div>
+        </div>
+          `;
+    }
+  }
 
 
 async function deletecartitem(k, div) {
@@ -127,6 +150,7 @@ async function deletecartitem(k, div) {
 	div.remove();
 	updatetotalbill(cart);
 	updatatotalquantity()
+	checkCart(cart)
 	localStorage.setItem('cart-id', JSON.stringify(cart));
 	
 }
