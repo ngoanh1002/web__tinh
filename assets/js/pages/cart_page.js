@@ -51,8 +51,7 @@ section.innerHTML = `
 <button class="btn buy-end-1">Thanh toán</button>
 </section>
 `;
-let main = document.querySelector("main")
-main.appendChild(section)
+
 
 
     export async function render() {
@@ -84,11 +83,12 @@ main.appendChild(section)
 
 	 
   </div>
-  <h4>Thành tiền: ${formattedtotalprice}VND</h4>
+  <h4 class="mbill">Thành tiền: ${formattedtotalprice}</h4>
   </div>
    
     </div>
 		`;
+	
 
 		div.querySelector('.delete').addEventListener('click', function() {
 			let confirmdelete = confirm('xóa sp khỏi đơn?');
@@ -123,10 +123,11 @@ main.appendChild(section)
 		
     section.querySelector('.cart').appendChild(div);
 	}
-	// return section
+	
 	updatetotalbill();
 	updatatotalquantity()
 	checkCart(cart)
+	return section
 	
 }
 async function checkCart(params) {
@@ -162,7 +163,7 @@ async function updatecartquantity(params) {
 		cart[key]['quantity'] += 1;
 		cart[key]['totalprice'] = cart[key]['price'] * cart[key]['quantity'];
 		parentdom.querySelector('.input-qty').innerHTML = cart[key]['quantity'];
-		parentdom.querySelector('h4').innerHTML = `Thành tiền: ${await formatprice(cart[key]['totalprice'])}`;
+		parentdom.querySelector('.mbill').innerHTML = `Thành tiền: ${await formatprice(cart[key]['totalprice'])}`;
 		
 		
 	}
@@ -175,7 +176,7 @@ async function updatecartquantity(params) {
 		}
 		cart[key]['totalprice'] = cart[key]['price'] * cart[key]['quantity'];
 		parentdom.querySelector('.input-qty').innerHTML = cart[key]['quantity'];
-		parentdom.querySelector('h4').innerHTML = `Thành tiền: ${await formatprice(cart[key]['totalprice'])}`;
+		parentdom.querySelector('.mbill').innerHTML = `Thành tiền: ${await formatprice(cart[key]['totalprice'])}`;
 		
 	}
 
@@ -205,3 +206,5 @@ section.querySelector('.totalbill').innerHTML = `Thành tiền: ${await formatpr
 		document.querySelector('.cartquantity').innerHTML = ``
 	}
 }
+let main = document.querySelector("main")
+main.appendChild(section)

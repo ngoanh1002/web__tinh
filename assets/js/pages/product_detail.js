@@ -105,6 +105,7 @@ async function handlecplup(type) {
           if (cart[key]){
               cart[key].quantity += number;
               cart[key].totalprice = cart[key].quantity * cart[key].price;
+              localStorage.setItem('cart-id', JSON.stringify(cart));
           }
          
           else{
@@ -118,13 +119,14 @@ async function handlecplup(type) {
               }
           }
           localStorage.setItem('cart-id', JSON.stringify(cart));
-          
+          updatatotalquantity(cart)
         });
+        
 
-        updatatotalquantity(cart)
+        
       
   section.querySelector('.container').appendChild(div)
-      return div
+    return div
 }
 
 
@@ -133,7 +135,7 @@ export async function updatatotalquantity() {
 	for (let [k, v] of Object.entries(cart)) {
 		totalquantity += v.quantity;
 	}
-	localStorage.setItem('totalquantity',totalquantity);
+	localStorage.setItem('totalquantity', JSON.stringify(totalquantity));
 	document.querySelector('.cartquantity').innerHTML = `${totalquantity}`
   console.log(totalquantity)
 	if(totalquantity == 0) {
