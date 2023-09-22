@@ -16,7 +16,7 @@ section.innerHTML = `
 <div class="cart-box">
 <div class="cart-left scroll"></div>
 <div class="cart-right">
-	<div class="col-5">
+	<div class="grid">
 		<div>
 			<p class="text-cart">Họ và tên </p>
 			<input type="text" class="pad-inp name-client">

@@ -38,6 +38,7 @@ export async function removeloader() {
 export async function formatprice(params) {
     return params.toLocaleString("vi-VN") + "VND";
   }
+  
   let cart = {};
   if(localStorage.getItem('cart-id')) cart = JSON.parse(localStorage.getItem('cart-id'));
  export async function updatatotalquantity() {
